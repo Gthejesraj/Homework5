@@ -9,7 +9,6 @@ import logging
 import time
 
 
-# Function to return Snowflake connection
 def return_snowflake_conn():
     user_id = Variable.get('SNOWFLAKE_USER')
     password = Variable.get('SNOWFLAKE_PASSWORD')
@@ -26,7 +25,6 @@ def return_snowflake_conn():
     return conn.cursor()
 
 
-# Task to fetch stock data from Alpha Vantage API
 @task
 def fetch_stock_data(stock_symbol):
     API_KEY = Variable.get('api_key')
@@ -34,7 +32,7 @@ def fetch_stock_data(stock_symbol):
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_symbol}&apikey={API_KEY}"
     logging.info(f"Fetching data from Alpha Vantage for {stock_symbol}.")
 
-    retries = 3  # Retry mechanism for rate limits or errors
+    retries = 3
     for attempt in range(retries):
         try:
             response = requests.get(url)
@@ -72,10 +70,9 @@ def fetch_stock_data(stock_symbol):
             if attempt == retries - 1:
                 raise Exception(f"Failed after {retries} attempts: {e}")
 
-    return None  # Return None if all retries fail
+    return None
 
 
-# Task to load data into Snowflake
 @task
 def load_forecast_to_snowflake(data_df, stock_symbol):
     if data_df is None or data_df.empty:
@@ -86,7 +83,7 @@ def load_forecast_to_snowflake(data_df, stock_symbol):
     cur = return_snowflake_conn()
 
     try:
-        # Insert data into Snowflake
+
         for _, row in data_df.iterrows():
             insert_query = f"""
             INSERT INTO LAB1.RAW_DATA.STOCK_FORECASTS (date, close, symbol)
@@ -107,19 +104,16 @@ def load_forecast_to_snowflake(data_df, stock_symbol):
         cur.close()
 
 
-# Define the DAG
 with DAG(
     dag_id='stock_forecast_pipeline',
     start_date=datetime(2024, 10, 12),
     catchup=False,
-    schedule_interval='*/10 * * * *',  # Every 10 minutes for testing
+    schedule_interval='*/10 * * * *',
     tags=['stocks', 'ETL']
 ) as dag:
 
-    # Fetch stock data for MCD and AAPL
     mcd_data = fetch_stock_data('MCD')
     aapl_data = fetch_stock_data('AAPL')
 
-    # Load data into Snowflake
     load_forecast_to_snowflake(mcd_data, 'MCD')
     load_forecast_to_snowflake(aapl_data, 'AAPL')
