@@ -17,9 +17,9 @@ default_args = {
 with DAG(
     dag_id='stock_price_pipeline',
     default_args=default_args,
-    start_date=datetime(2024, 10, 6),
+    start_date=datetime(2024, 10, 10),
     catchup=False,
-    schedule_interval='30 23 * * *',
+    schedule_interval='@daily',
     tags=['ETL']
 ) as dag:
 
