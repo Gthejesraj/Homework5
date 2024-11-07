@@ -1,0 +1,18 @@
+<services>
+    <container id="default" version="1.0">
+        <document-processing/>
+        <search/>
+        <http>
+            <server id="default" port="8080"/>
+        </http>
+    </container>
+
+    <content id="search" version="1.0">
+        <redundancy>2</redundancy>
+        <documents>
+            <document type="doc" mode="index"/>
+        </documents>
+        <nodes count="1"/>
+    </content>
+</services>
+

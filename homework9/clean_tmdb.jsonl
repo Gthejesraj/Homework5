@@ -1,0 +1,3 @@
+{"put": "id:search:doc::1", "fields": {"doc_id": 1, "title": "Sample Title 1", "text": "Sample Text 1"}}
+{"put": "id:search:doc::2", "fields": {"doc_id": 2, "title": "Sample Title 2", "text": "Sample Text 2"}}
+{"put": "id:search:doc::3", "fields": {"doc_id": 3, "title": "Sample Title 3", "text": "Sample Text 3"}}

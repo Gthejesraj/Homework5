@@ -1,0 +1,24 @@
+[0m13:11:54.835738 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b0051f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c1d4a70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c1d46b0>]}
+
+
+============================== 13:11:54.841294 | 9e42b417-f1fe-4a88-95c8-2bec8d20d732 ==============================
+[0m13:11:54.841294 [info ] [MainThread]: Running with dbt=1.8.7
+[0m13:11:54.842174 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'printer_width': '80', 'cache_selected_only': 'False', 'use_colors': 'True', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'warn_error': 'None', 'debug': 'False', 'indirect_selection': 'eager', 'static_parser': 'True', 'target_path': 'None', 'use_experimental_parser': 'False', 'version_check': 'True', 'invocation_command': 'dbt init lab2', 'log_path': 'logs', 'profiles_dir': '/Users/thejesraj/.dbt', 'introspect': 'True', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'empty': 'None', 'log_format': 'default', 'write_json': 'True'}
+[0m13:11:54.865032 [debug] [MainThread]: Starter project path: /opt/anaconda3/lib/python3.12/site-packages/dbt/include/starter_project
+[0m13:11:54.873132 [info ] [MainThread]: 
+Your new dbt project "lab2" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m13:11:54.873615 [info ] [MainThread]: Setting up your profile.
