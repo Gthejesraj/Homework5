@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All Posts</title>
+</head>
+
+<body>
+    <h1>All Blog Posts</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <a href="/post/{{ post.id }}">{{ post.title }}</a> <!-- View single post -->
+            <a href="/edit/{{ post.id }}">Edit</a> <!-- Edit post -->
+            <a href="/delete/{{ post.id }}" style="color: red;">Delete</a> <!-- Delete post -->
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/new">Create a New Post</a> <!-- Link to create a new post -->
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+    <form method="POST"> <!-- Use POST method for form submission -->
+        {{ form.hidden_tag() }} <!-- CSRF protection -->
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=30) }} <!-- Input for the title -->
+        </p>
+        <p>
+            {{ form.content.label }}<br>
+            {{ form.content(rows=5, cols=30) }} <!-- Textarea for the content -->
+        </p>
+        <p>{{ form.submit() }}</p> <!-- Submit button -->
+    </form>
+    <a href="/posts">Back to Posts</a> <!-- Link to go back to the list of posts -->
+</body>
+
+</html>
